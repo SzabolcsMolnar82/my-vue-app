@@ -1,30 +1,50 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <h1>Számok szorzása</h1>
+    <div>
+      <label for="number1">Első szám:</label>
+      <input type="number" v-model="number1" id="number1" />
+    </div>
+    <div>
+      <label for="number2">Második szám:</label>
+      <input type="number" v-model="number2" id="number2" />
+    </div>
+    <button @click="multiplyNumbers">Számok összeszorzása</button>
+    <div v-if="result !== null">
+      <h2>Eredmény: {{ result }}</h2>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script>
+export default {
+  data() {
+    return {
+      number1: 0,
+      number2: 0,
+      result: null,
+    };
+  },
+  methods: {
+    multiplyNumbers() {
+      this.result = this.number1 * this.number2;
+    },
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin-top: 60px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+input {
+  margin-bottom: 10px;
 }
 </style>
+
+
